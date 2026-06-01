@@ -1,13 +1,11 @@
 const { test, expect } = require('../support');
-import { LoginPage } from '../pages/LoginPage';
-import { MoviesPage } from '../pages/MoviesPage';
-import { Toast } from '../pages/Components';
+
 
 
 test('deve fazer login como administrador', async ({ page }) => {
     await page.login.visit()
     await page.login.submitLogin('admin@zombieplus.com', 'pwd123')
-    await page.movies.isLoggedIn()
+    await page.login.isLoggedIn('Admin')
 
 });
 
