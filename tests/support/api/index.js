@@ -20,7 +20,6 @@ export class Api {
     }
 
     async getCompanyByName(companyName) {
-        await this.setToken()
 
         const response = await this.request.get('http://localhost:3333/companies', {
             headers: {
@@ -33,7 +32,6 @@ export class Api {
         })
 
         expect(response.ok()).toBeTruthy()
-
         const body = JSON.parse(await response.text())
         return body.data[0].id
 
@@ -41,7 +39,6 @@ export class Api {
 
     async postMovie(movie) {
         const companyId = await this.getCompanyByName(movie.company)
-        await this.setToken()
 
         const response = await this.request.post('http://localhost:3333/movies', {
             headers: {
