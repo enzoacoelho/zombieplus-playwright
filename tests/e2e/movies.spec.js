@@ -40,5 +40,29 @@ test('não deve cadastrar sem preencher os campos obrigatórios', async ({ page 
         "Campo obrigatório",
         "Campo obrigatório"
     ])
+})
 
+test('deve remover um filme do catalogo', async ({ page, request }) => {
+    const movie = data.to_remove
+    await request.api.postMovie(movie)
+
+    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+
+    await page.movies.remove(movie.title)
+    await page.popup.haveText('Filme removido com sucesso.')
+
+
+})
+
+test('deve realizar busca por titulo no catalogo', async ({ page, request }) => {
+    const movies = data.search
+
+    movies.data.forEach(async (m) => {
+        await request.api.postMovie(m)
+    })
+
+    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+    await page.movies.search(movies.input)
+
+    await page.movies.tableHave(movie.outputs)
 })

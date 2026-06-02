@@ -15,7 +15,7 @@
     "featured": true,
     "cover": "/covers/movies/rec.jpg"
   },
-  "world_war_z": {
+  "to_remove": {
     "title": "Guerra Mundial Z",
     "overview": "Um ex-investigador da ONU viaja pelo mundo tentando descobrir a origem de uma pandemia zumbi que ameaça extinguir a humanidade.",
     "company": "Netflix",
@@ -23,21 +23,30 @@
     "featured": false,
     "cover": "/covers/movies/wwz.png"
   },
-  "zumbilandia": {
-    "title": "Zumbilândia",
-    "overview": "Quatro sobreviventes de um apocalipse zumbi atravessam os Estados Unidos enfrentando mortos-vivos e situações absurdamente engraçadas.",
-    "company": "Netflix",
-    "release_year": 2009,
-    "featured": false,
-    "cover": "/covers/movies/zumbilandia.jpg"
-  },
-  "invasao_zumbi": {
-    "title": "Invasão Zumbi",
-    "overview": "Passageiros de um trem na Coreia do Sul precisam lutar pela sobrevivência quando um vírus zumbi se espalha rapidamente pelo país.",
-    "company": "Netflix",
-    "release_year": 2016,
-    "featured": false,
-    "cover": "/covers/movies/invasao_zumbi.jpg"
+  "search": {
+    "input": "zumbi",
+    "outputs": [
+        "Zumbilândia",
+        "Invasão Zumbi"
+    ],
+    "data": [
+      {
+        "title": "Zumbilândia",
+        "overview": "Quatro sobreviventes de um apocalipse zumbi atravessam os Estados Unidos enfrentando mortos-vivos e situações absurdamente engraçadas.",
+        "company": "Netflix",
+        "release_year": 2009,
+        "featured": false,
+        "cover": "/covers/movies/zumbilandia.jpg"
+      },
+      {
+        "title": "Invasão Zumbi",
+        "overview": "Passageiros de um trem na Coreia do Sul precisam lutar pela sobrevivência quando um vírus zumbi se espalha rapidamente pelo país.",
+        "company": "Netflix",
+        "release_year": 2016,
+        "featured": false,
+        "cover": "/covers/movies/invasao_zumbi.jpg"
+      }
+    ]
   },
   "todo_mundo_quase_morto": {
     "title": "Todo Mundo Quase Morto",
