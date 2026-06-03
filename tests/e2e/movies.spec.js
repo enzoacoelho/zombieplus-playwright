@@ -64,5 +64,5 @@ test('deve realizar busca por titulo no catalogo', async ({ page, request }) => 
     await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
     await page.movies.search(movies.input)
 
-    await page.movies.tableHave(movie.outputs)
+    await page.movies.tableHave(movies.outputs)
 })
