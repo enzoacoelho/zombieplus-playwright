@@ -1,0 +1,137 @@
+{
+    "create": {
+        "title": "The Walking Dead",
+        "overview": "Um vice-xerife acorda de um coma e lidera um grupo de sobreviventes em um mundo pós-apocalíptico dominado por zumbis.",
+        "company": "Fox Entertainment",
+        "release_year": 2010,
+        "seasons": 11,
+        "featured": false,
+        "cover": "/covers/tvshows/the_walking_dead.jpg"
+    },
+    "duplicate": {
+        "title": "The Last of Us",
+        "overview": "Vinte anos após a destruição da civilização moderna por uma infecção fúngica, um sobrevivente experiente tenta guiar uma garota imune.",
+        "company": "Warner Bros. Pictures",
+        "release_year": 2023,
+        "seasons": 1,
+        "featured": false,
+        "cover": "/covers/tvshows/the_last_of_us.jpg"
+    },
+    "to_remove": {
+        "title": "All of Us Are Dead",
+        "overview": "Uma epidemia zumbi explode em uma escola e os estudantes isolados precisam lutar para sobreviver e escapar do local.",
+        "company": "Netflix",
+        "release_year": 2022,
+        "seasons": 1,
+        "featured": false,
+        "cover": "/covers/tvshows/all_of_us_are_dead.jpg"
+    },
+    "search": {
+        "input": "zombie",
+        "outputs": [
+            "iZombie",
+            "Zombie Detective"
+        ],
+        "data": [
+            {
+                "title": "iZombie",
+                "overview": "Uma estudante de medicina que virou zumbi consegue um emprego no necrotério para comer cérebros e ajudar a polícia a resolver crimes.",
+                "company": "Warner Bros. Pictures",
+                "release_year": 2015,
+                "seasons": 5,
+                "featured": false,
+                "cover": "/covers/tvshows/izombie.jpg"
+            },
+            {
+                "title": "Zombie Detective",
+                "overview": "Um zumbi que já está morto há dois anos assume a identidade de um detetive particular e tenta se misturar com os humanos enquanto busca seu passado.",
+                "company": "Netflix",
+                "release_year": 2020,
+                "seasons": 1,
+                "featured": false,
+                "cover": "/covers/tvshows/zombie_detective.jpg"
+            }
+        ]
+    },
+    "kingdom": {
+        "title": "Kingdom",
+        "overview": "Na Coreia do Sul do período Joseon, um príncipe herdeiro investiga uma misteriosa praga que ressuscita os mortos e ameaça o reino.",
+        "company": "Netflix",
+        "release_year": 2019,
+        "seasons": 2,
+        "featured": false,
+        "cover": "/covers/tvshows/kingdom.jpg"
+    },
+    "black_summer": {
+        "title": "Black Summer",
+        "overview": "Nos primeiros dias sombrios de um apocalipse zumbi, estranhos se unem para encontrar a força necessária para sobreviver.",
+        "company": "Netflix",
+        "release_year": 2019,
+        "seasons": 2,
+        "featured": false,
+        "cover": "/covers/tvshows/black_summer.jpg"
+    },
+    "fear_the_walking_dead": {
+        "title": "Fear the Walking Dead",
+        "overview": "Uma série derivada que explora o início do apocalipse zumbi através dos olhos de uma família desestruturada de Los Angeles.",
+        "company": "Fox Entertainment",
+        "release_year": 2015,
+        "seasons": 8,
+        "featured": false,
+        "cover": "/covers/tvshows/fear_the_walking_dead.jpg"
+    },
+    "z_nation": {
+        "title": "Z Nation",
+        "overview": "Anos após um vírus zumbi devastar o país, um grupo de heróis cotidianos precisa transportar o único sobrevivente imune até a Califórnia.",
+        "company": "Universal Pictures",
+        "release_year": 2014,
+        "seasons": 5,
+        "featured": false,
+        "cover": "/covers/tvshows/z_nation.jpg"
+    },
+    "santa_clarita_diet": {
+        "title": "Santa Clarita Diet",
+        "overview": "A vida de um casal de corretores de imóveis vira de cabeça para baixo quando a esposa passa por uma transformação dramática e vira zumbi.",
+        "company": "Netflix",
+        "release_year": 2017,
+        "seasons": 3,
+        "featured": false,
+        "cover": "/covers/tvshows/santa_clarita_diet.jpg"
+    },
+    "daybreak": {
+        "title": "Daybreak",
+        "overview": "Nesta série pós-apocalíptica cheia de humor negro, o adolescente Josh procura sua namorada perdida em uma Glendale tomada por zumbis.",
+        "company": "Netflix",
+        "release_year": 2019,
+        "seasons": 1,
+        "featured": false,
+        "cover": "/covers/tvshows/daybreak.jpg"
+    },
+    "the_returned": {
+        "title": "The Returned",
+        "overview": "Em uma pequena cidade montanhosa, várias pessoas mortas há anos reaparecem de repente em suas casas sem ter envelhecido e sem memória do que houve.",
+        "company": "Netflix",
+        "release_year": 2015,
+        "seasons": 1,
+        "featured": false,
+        "cover": "/covers/tvshows/the_returned.jpg"
+    },
+    "helix": {
+        "title": "Helix",
+        "overview": "Uma equipe de cientistas do Centro de Controle de Doenças viaja para uma base no Ártico para investigar o surto de um vírus que transforma humanos em vetores violentos.",
+        "company": "Netflix",
+        "release_year": 2014,
+        "seasons": 2,
+        "featured": false,
+        "cover": "/covers/tvshows/helix.jpg"
+    },
+    "day_of_the_dead": {
+        "title": "Day of the Dead",
+        "overview": "Seis estranhos tentam sobreviver às primeiras 24 horas de uma invasão de mortos-vivos em sua pequena e pacata cidade canadense.",
+        "company": "Netflix",
+        "release_year": 2021,
+        "seasons": 1,
+        "featured": false,
+        "cover": "/covers/tvshows/day_of_the_dead.jpg"
+    }
+}

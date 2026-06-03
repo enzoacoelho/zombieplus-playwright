@@ -1,21 +1,22 @@
 import { expect } from '@playwright/test';
 
-export class Movies {
+export class TvShows {
 
     constructor(page) {
         this.page = page
     }
 
     async visit() {
-        await this.page.goto('http://localhost:3000/admin/movies')
+        await this.page.goto('http://localhost:3000/admin/tvshows')
     }
 
     async goForm() {
+        await this.visit()
         await this.page.locator('a[href*="register"]').click()
-        await expect(this.page).toHaveURL(/movies\/register/)
+        await expect(this.page).toHaveURL(/tvshows\/register/)
 
         const headerTitle = this.page.locator('header h1');
-        await expect(headerTitle).toHaveText('Cadastrar novo Filme')
+        await expect(headerTitle).toHaveText('Cadastrar nova Série')
     }
 
     async submit() {
@@ -23,31 +24,33 @@ export class Movies {
             .click()
     }
 
-    async create(movie) {
+    async create(tvshow) {
 
         await this.goForm()
 
-        await this.page.getByLabel('Titulo do filme').fill(movie.title)
-        await this.page.getByLabel('Sinopse').fill(movie.overview)
+        await this.page.getByLabel('Titulo da série').fill(tvshow.title)
+        await this.page.getByLabel('Sinopse').fill(tvshow.overview)
 
         await this.page.locator('#select_company_id .react-select__indicators')
             .click()
 
         await this.page.locator('.react-select__option')
-            .filter({ hasText: movie.company })
+            .filter({ hasText: tvshow.company })
             .click()
 
         await this.page.locator('#select_year .react-select__indicator')
             .click()
 
         await this.page.locator('.react-select__option')
-            .filter({ hasText: movie.release_year })
+            .filter({ hasText: tvshow.release_year })
             .click()
 
-        await this.page.locator('input[name=cover]')
-            .setInputFiles('tests/support/fixtures' + movie.cover)
+        await this.page.getByLabel('Temporadas').fill(tvshow.seasons.toString())
 
-        if (movie.featured) {
+        await this.page.locator('input[name=cover]')
+            .setInputFiles('tests/support/fixtures' + tvshow.cover)
+
+        if (tvshow.featured) {
             await this.page.locator('.featured .react-switch').click()
         }
 
@@ -69,6 +72,7 @@ export class Movies {
     }
 
     async search(target) {
+        await this.visit()
         await this.page.getByPlaceholder('Busque pelo nome')
             .fill(target)
 
