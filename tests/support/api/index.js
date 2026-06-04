@@ -1,4 +1,6 @@
 const { expect } = require('@playwright/test');
+const path = require('path'); 
+const fs = require('fs');
 
 export class Api {
 
@@ -39,6 +41,7 @@ export class Api {
 
     async postMovie(movie) {
         const companyId = await this.getCompanyByName(movie.company)
+        const imagePath = path.resolve(__dirname, '..', 'fixtures', `.${movie.cover}`);
 
         const response = await this.request.post('http://localhost:3333/movies', {
             headers: {
@@ -51,7 +54,8 @@ export class Api {
                 overview: movie.overview,
                 company_id: companyId,
                 release_year: movie.release_year,
-                featured: movie.featured
+                featured: movie.featured,
+                cover: fs.createReadStream(imagePath)
             }
         })
 
@@ -61,6 +65,7 @@ export class Api {
 
     async postTvShow(tvShow) {
         const companyId = await this.getCompanyByName(tvShow.company)
+        const imagePath = path.resolve(__dirname, '..', 'fixtures', `.${tvShow.cover}`);
 
         const response = await this.request.post('http://localhost:3333/tvshows', {
             headers: {
@@ -74,7 +79,8 @@ export class Api {
                 company_id: companyId,
                 release_year: tvShow.release_year,
                 featured: tvShow.featured,
-                seasons: tvShow.seasons
+                seasons: tvShow.seasons,
+                cover: fs.createReadStream(imagePath)
             }
         })
 

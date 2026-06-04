@@ -54,7 +54,7 @@ test('deve remover um filme do catalogo', async ({ page, request }) => {
 
 })
 
-test('deve realizar busca por titulo no catalogo', async ({ page, request }) => {
+test('deve realizar busca por titulo existente no catalogo', async ({ page, request }) => {
     const movies = data.search
 
     movies.data.forEach(async (m) => {
@@ -65,4 +65,8 @@ test('deve realizar busca por titulo no catalogo', async ({ page, request }) => 
     await page.movies.search(movies.input)
 
     await page.movies.tableHave(movies.outputs)
+})
+
+test('deve realizar busca por titulo não existente no catalogo', async ({ page, request }) => {
+
 })
