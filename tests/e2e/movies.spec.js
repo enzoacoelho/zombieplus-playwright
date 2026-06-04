@@ -57,9 +57,9 @@ test('deve remover um filme do catalogo', async ({ page, request }) => {
 test('deve realizar busca por titulo existente no catalogo', async ({ page, request }) => {
     const movies = data.search
 
-    movies.data.forEach(async (m) => {
+    for (const m of movies.data) {
         await request.api.postMovie(m)
-    })
+    }
 
     await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
     await page.movies.search(movies.input)
@@ -68,5 +68,9 @@ test('deve realizar busca por titulo existente no catalogo', async ({ page, requ
 })
 
 test('deve realizar busca por titulo não existente no catalogo', async ({ page, request }) => {
+    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+    await page.movies.search("Anjo")
+
+    await page.movies.shouldHaveNoResults('Nenhum registro encontrado!')
 
 })

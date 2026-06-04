@@ -1,13 +1,19 @@
 const { test, expect } = require('../support');
+const data = require('../support/fixtures/leads.json');
+import { executeSQL } from '../support/database';
 import { faker } from '@faker-js/faker';
 
-test('deve cadastrar um lead na fila de espera', async ({ page }) => {
-  const leadName = faker.person.fullName()
-  const leadEmail = faker.internet.email()
+test.beforeAll(async () => {
+    await executeSQL(`DELETE from leads`)
 
+})
+
+test('deve cadastrar um lead na fila de espera', async ({ page }) => {
+  const lead = data.create
+ 
   await page.leads.visit()
   await page.leads.openLeadModal()
-  await page.leads.submitLeadForm(leadName, leadEmail)
+  await page.leads.submitLeadForm(lead.name, lead.email)
 
   const message = 'Agradecemos por compartilhar seus dados conosco. Em breve, nossa equipe entrará em contato.';
   await page.popup.haveText(message)
@@ -15,21 +21,13 @@ test('deve cadastrar um lead na fila de espera', async ({ page }) => {
 });
 
 test('não deve cadastrar quando o email ja existe', async ({ page, request }) => {
-  const leadName = faker.person.fullName()
-  const leadEmail = faker.internet.email()
+  const lead = data.duplicate
 
-  const newLead = await request.post('http://localhost:3333/leads', {
-    data: {
-      name: leadName,
-      email: leadEmail
-    }
-  })
-
-  expect(newLead.ok()).toBeTruthy()
+  await request.api.postLeads(lead)
 
   await page.leads.visit()
   await page.leads.openLeadModal()
-  await page.leads.submitLeadForm(leadName, leadEmail)
+  await page.leads.submitLeadForm(lead.name, lead.email)
 
   const message = "Verificamos que o endereço de e-mail fornecido já consta em nossa lista de espera. Isso significa que você está um passo mais perto de aproveitar nossos serviços."
   await page.popup.haveText(message)
@@ -37,10 +35,11 @@ test('não deve cadastrar quando o email ja existe', async ({ page, request }) =
 });
 
 test('não deve cadastrar com email invalido', async ({ page }) => {
+  const lead = data.invalidEmail
 
   await page.leads.visit()
   await page.leads.openLeadModal()
-  await page.leads.submitLeadForm('Enzo Coelho', 'enzomail.com')
+  await page.leads.submitLeadForm(lead.name, lead.email)
 
   await page.leads.alertHaveText('Email incorreto')
 

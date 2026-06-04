@@ -6,6 +6,7 @@ import { Movies } from './actions/Movies';
 import { TvShows } from './actions/TvShows';
 import { Popup } from './actions/Components';
 import { Leads } from './actions/Leads';
+import { LeadsMgt } from './actions/LeadsMgt';
 
 const test = base.extend({
   page: async ({ page }, use) => {
@@ -13,6 +14,7 @@ const test = base.extend({
     const context = page
 
     context['leads'] = new Leads(page)
+    context['leadsmgt'] = new LeadsMgt(page)
     context['login'] = new Login(page)
     context['movies'] = new Movies(page)
     context['tvshows'] = new TvShows(page)

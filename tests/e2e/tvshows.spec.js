@@ -58,13 +58,21 @@ test('deve remover uma série do catalogo', async ({ page, request }) => {
 
 test('deve realizar busca por titulo no catalogo', async ({ page, request }) => {
     const series = data.search
-
-    series.data.forEach(async (s) => {
+    
+    for (const s of series.data) {
         await request.api.postTvShow(s)
-    })
+    }
 
     await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
     await page.tvshows.search(series.input)
 
     await page.tvshows.tableHave(series.outputs)
+})
+
+test('deve realizar busca por titulo não existente no catalogo', async ({ page, request }) => {
+    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+    await page.tvshows.search("Anjo")
+
+    await page.tvshows.shouldHaveNoResults('Nenhum registro encontrado!')
+
 })

@@ -84,6 +84,11 @@ export class TvShows {
         await expect(rows).toContainText(content)
     }
 
+    async shouldHaveNoResults(message) {
+        const messageLocator = this.page.getByText(message)
+        await expect(messageLocator).toBeVisible()
+    }
+
     async alertHaveText(target) {
         await expect(this.page.locator('.alert')).toHaveText(target);
 

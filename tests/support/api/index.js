@@ -1,5 +1,5 @@
 const { expect } = require('@playwright/test');
-const path = require('path'); 
+const path = require('path');
 const fs = require('fs');
 
 export class Api {
@@ -81,6 +81,23 @@ export class Api {
                 featured: tvShow.featured,
                 seasons: tvShow.seasons,
                 cover: fs.createReadStream(imagePath)
+            }
+        })
+
+        expect(response.ok()).toBeTruthy()
+
+    }
+
+    async postLeads(lead) {
+        const response = await this.request.post('http://localhost:3333/leads', {
+            headers: {
+                Authorization: this.token,
+                ContentType: 'multipart/form-data',
+                Accept: 'application/json, text/plain, */*'
+            },
+            data: {
+                name: lead.name,
+                email: lead.email,
             }
         })
 

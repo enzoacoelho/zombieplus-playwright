@@ -1,0 +1,36 @@
+{
+  "create": {
+    "name": "Angel Batista",
+    "email": "angelbatista@test.com"
+  },
+  "duplicate": {
+    "name": "James Doakes",
+    "email": "doakes@gmail.com"
+  },
+  "invalidEmail": {
+    "name": "Rita Bennett",
+    "email": "ritabennett.com"
+  },
+  "search": {
+    "input": "Morgan",
+    "outputs": [
+      "dextermorgan@gmail.com",
+      "debramorgan@outlook.com",
+      "mariamorgan@hotmail.com"
+    ],
+    "data": [
+      {
+        "name": "Dexter Morgan",
+        "email": "dextermorgan@gmail.com"
+      },
+      {
+        "name": "Debra Morgan Quinn",
+        "email": "debramorgan@outlook.com"
+      },
+      {
+        "name": "Maria LaGueta",
+        "email": "mariamorgan@hotmail.com"
+      }
+    ]
+  }
+}
