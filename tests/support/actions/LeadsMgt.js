@@ -7,7 +7,7 @@ export class LeadsMgt {
     }
 
     async visit() {
-        await this.page.goto('http://localhost:3000/admin/leads')
+        await this.page.goto('/admin/leads')
     }
 
     async search(target) {

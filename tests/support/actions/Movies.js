@@ -7,7 +7,7 @@ export class Movies {
     }
 
     async visit() {
-        await this.page.goto('http://localhost:3000/admin/movies')
+        await this.page.goto('/admin/movies')
     }
 
     async goForm() {
