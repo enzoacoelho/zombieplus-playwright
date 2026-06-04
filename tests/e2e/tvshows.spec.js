@@ -1,6 +1,7 @@
 const { test, expect } = require('../support');
 import { executeSQL } from '../support/database';
 const data = require('../support/fixtures/tvshows.json');
+const users = require('../support/fixtures/users.json');
 
 test.beforeAll(async () => {
     await executeSQL(`DELETE from tvshows`)
@@ -8,8 +9,9 @@ test.beforeAll(async () => {
 
 test('deve poder cadastrar uma nova serie', async ({ page }) => {
     const serie = data.create
+    const admin = users.administrador
 
-    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+    await page.login.do(admin.email, admin.password, admin.name)
 
     await page.tvshows.create(serie)
     await page.popup.haveText(`A série '${serie.title}' foi adicionada ao catálogo.`)
@@ -17,17 +19,19 @@ test('deve poder cadastrar uma nova serie', async ({ page }) => {
 
 test('não deve cadastrar quando a série já está no catalogo', async ({ page, request }) => {
     const serie = data.duplicate
+    const admin = users.administrador
 
     await request.api.postTvShow(serie)
 
-    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+    await page.login.do(admin.email, admin.password, admin.name)
     await page.tvshows.create(serie)
 
     await page.popup.haveText(`O título '${serie.title}' já consta em nosso catálogo. Por favor, verifique se há necessidade de atualizações ou correções para este item.`)
 })
 
 test('não deve cadastrar sem preencher os campos obrigatórios', async ({ page }) => {
-    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+    const admin = users.administrador
+    await page.login.do(admin.email, admin.password, admin.name)
 
     await page.tvshows.goForm()
     await page.tvshows.submit()
@@ -43,9 +47,10 @@ test('não deve cadastrar sem preencher os campos obrigatórios', async ({ page 
 
 test('deve remover uma série do catalogo', async ({ page, request }) => {
     const serie = data.to_remove
+    const admin = users.administrador
     await request.api.postTvShow(serie)
 
-    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+    await page.login.do(admin.email, admin.password, admin.name)
 
     await page.tvshows.remove(serie.title)
     await page.popup.haveText('Série removida com sucesso.')
@@ -54,19 +59,21 @@ test('deve remover uma série do catalogo', async ({ page, request }) => {
 
 test('deve realizar busca por titulo no catalogo', async ({ page, request }) => {
     const series = data.search
+    const admin = users.administrador
 
     for (const s of series.data) {
         await request.api.postTvShow(s)
     }
 
-    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+    await page.login.do(admin.email, admin.password, admin.name)
     await page.tvshows.search(series.input)
 
     await page.tvshows.tableHave(series.outputs)
 })
 
 test('deve realizar busca por titulo não existente no catalogo', async ({ page, request }) => {
-    await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
+    const admin = users.administrador
+    await page.login.do(admin.email, admin.password, admin.name)
     await page.tvshows.search("Anjo")
 
     await page.tvshows.shouldHaveNoResults('Nenhum registro encontrado!')

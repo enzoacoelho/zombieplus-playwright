@@ -1,10 +1,12 @@
 const { test, expect } = require('../support');
+const data = require('../support/fixtures/users.json');
 
 test('deve fazer login como administrador', async ({ page }) => {
-    await page.login.visit()
-    await page.login.submitLogin('admin@zombieplus.com', 'pwd123')
-    await page.login.isLoggedIn('Admin')
+    const user = data.administrador
 
+    await page.login.visit()
+    await page.login.submitLogin(user.email, user.password)
+    await page.login.isLoggedIn(user.name)
 });
 
 test('não deve logar com senha incorreta', async ({ page }) => {
