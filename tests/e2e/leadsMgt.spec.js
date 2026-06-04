@@ -1,7 +1,6 @@
 const { test, expect } = require('../support');
 const data = require('../support/fixtures/leads.json');
 import { executeSQL } from '../support/database';
-import { faker } from '@faker-js/faker';
 
 test.beforeAll(async () => {
     await executeSQL(`DELETE from leads`)

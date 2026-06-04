@@ -63,7 +63,7 @@ export class TvShows {
         await this.visit()
 
         //pega a linha correta do filme
-        await this.page.getByRole('row', {name: title})
+        await this.page.getByRole('row', { name: title })
             .getByRole('button').click()
 
         //confirmar exclusao  

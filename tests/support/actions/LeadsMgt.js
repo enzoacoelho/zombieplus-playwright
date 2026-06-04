@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-export class LeadsMgt{
+export class LeadsMgt {
 
     constructor(page) {
         this.page = page
@@ -18,7 +18,7 @@ export class LeadsMgt{
         await this.page.click('.actions button')
     }
 
-        async tableHave(content) {
+    async tableHave(content) {
         const rows = this.page.getByRole('row')
         await expect(rows).toContainText(content)
     }

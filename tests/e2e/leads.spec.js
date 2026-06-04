@@ -1,16 +1,15 @@
 const { test, expect } = require('../support');
 const data = require('../support/fixtures/leads.json');
 import { executeSQL } from '../support/database';
-import { faker } from '@faker-js/faker';
 
 test.beforeAll(async () => {
-    await executeSQL(`DELETE from leads`)
+  await executeSQL(`DELETE from leads`)
 
 })
 
 test('deve cadastrar um lead na fila de espera', async ({ page }) => {
   const lead = data.create
- 
+
   await page.leads.visit()
   await page.leads.openLeadModal()
   await page.leads.submitLeadForm(lead.name, lead.email)
@@ -46,7 +45,6 @@ test('não deve cadastrar com email invalido', async ({ page }) => {
 });
 
 test('não deve cadastrar com email vazio', async ({ page }) => {
-
   await page.leads.visit()
   await page.leads.openLeadModal()
   await page.leads.submitLeadForm('Enzo Coelho', '')
@@ -56,7 +54,6 @@ test('não deve cadastrar com email vazio', async ({ page }) => {
 });
 
 test('não deve cadastrar com nome vazio', async ({ page }) => {
-
   await page.leads.visit()
   await page.leads.openLeadModal()
   await page.leads.submitLeadForm('', 'enzo@mail.com')
@@ -66,7 +63,6 @@ test('não deve cadastrar com nome vazio', async ({ page }) => {
 });
 
 test('não deve cadastrar com todos os campos vazios', async ({ page }) => {
-
   await page.leads.visit()
   await page.leads.openLeadModal()
   await page.leads.submitLeadForm('', '')

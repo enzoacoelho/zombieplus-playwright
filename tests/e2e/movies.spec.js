@@ -4,13 +4,11 @@ const data = require('../support/fixtures/movies.json');
 
 test.beforeAll(async () => {
     await executeSQL(`DELETE from movies`)
-
 })
 
 test('deve poder cadastrar um novo filme', async ({ page }) => {
     const movie = data.create
 
-    //é preciso estar logado
     await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
 
     await page.movies.create(movie)
@@ -28,7 +26,6 @@ test('não deve cadastrar quando o filme já está no catalogo', async ({ page, 
 })
 
 test('não deve cadastrar sem preencher os campos obrigatórios', async ({ page }) => {
-    //é preciso estar logado
     await page.login.do('admin@zombieplus.com', 'pwd123', 'Admin')
 
     await page.movies.goForm()
@@ -50,8 +47,6 @@ test('deve remover um filme do catalogo', async ({ page, request }) => {
 
     await page.movies.remove(movie.title)
     await page.popup.haveText('Filme removido com sucesso.')
-
-
 })
 
 test('deve realizar busca por titulo existente no catalogo', async ({ page, request }) => {

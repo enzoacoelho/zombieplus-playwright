@@ -27,7 +27,7 @@ export class Leads {
             .getByText('Quero entrar na fila!').click()
     }
 
-    async alertHaveText(target) {        
+    async alertHaveText(target) {
         await expect(this.page.locator('.alert')).toHaveText(target);
 
     }

@@ -13,7 +13,7 @@ const pool = new Pool(DbConfig)
 
 export async function executeSQL(sqlScript) {
     let client; // Declaramos aqui fora para conseguir usar no 'finally'
-    
+
     try {
         // 1. ADICIONADO O AWAIT: Agora 'client' é o cliente real de conexão
         client = await pool.connect()
